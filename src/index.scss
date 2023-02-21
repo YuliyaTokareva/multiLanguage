@@ -1,0 +1,87 @@
+@import 'breakpoints.scss';
+@import 'src/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap');
+
+@font-face {
+  font-family: 'proxima_nova_rgregular';
+  src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot');
+  src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.woff') format('woff'),
+    url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.ttf') format('truetype'),
+    url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.svg#proxima_nova_rgregular')
+      format('svg');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  color: $color-main-text;
+  font-family: 'proxima_nova_rgregular', 'Figtree', sans-serif;
+  position: relative;
+  font-size: 16px;
+}
+
+.page {
+  display: flex;
+  min-height: 100vh;
+  margin: auto;
+  margin-top: 1px;
+  flex-direction: column;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  margin: 0;
+  padding-left: 15px;
+}
+
+li {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.5625px;
+  color: $color-main-text;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+.button {
+  margin: 0;
+  padding: 0;
+  background: $main-button-bg;
+  border-radius: 8px;
+  width: 127px;
+  height: 52px;
+  text-transform: uppercase;
+  color: $color-white-text;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+}
+.mob {
+  @include for-large-up {
+    display: none !important;
+  }
+}
+.desktop {
+  @include for-large-down {
+    display: none !important;
+  }
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
