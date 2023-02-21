@@ -26,7 +26,7 @@ const components = {
           color: '#eee'
         },
         '&:hover': {
-          // backgroundColor: getRgba('#999', 0.1),
+          // backgroundColor: getRgba('#999', 0.1)
         }
       }
     }
