@@ -1,4 +1,4 @@
-const baseUrl = 'https://63f5fa8459c944921f6a8007.mockapi.io/news';
+const baseUrl = 'https://mockend.com/mockend/demo/posts';
 
 export const fetchCocktails = async () => {
   try {
