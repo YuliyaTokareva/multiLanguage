@@ -12,9 +12,7 @@
         "maxLength": 20
       }
     },
-    "next_page": {
-      "link": "https://mockend.com/YuliyaTokareva/multiLanguage/posts?_offset=20&_limit=10"
-    },
+
     "body": {
       "loremParagraphs": {
         "minLength": 10,

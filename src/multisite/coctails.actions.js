@@ -24,11 +24,13 @@ export const fetchCandidatesListRecieved = (coctailsList) => {
 //   return action;
 // };
 
-export const getCoctailsList = () => {
+export const getCoctailsList = (urlName) => {
   // eslint-disable-next-line
   const thunkAction = function (dispatch) {
     // dispatch(showSpinner());
-    fetchCocktails().then((coctailsList) => dispatch(fetchCandidatesListRecieved(coctailsList)));
+    fetchCocktails(urlName).then((coctailsList) =>
+      dispatch(fetchCandidatesListRecieved(coctailsList))
+    );
   };
   return thunkAction;
 };

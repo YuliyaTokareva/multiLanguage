@@ -5,19 +5,23 @@ import * as coctailsActions from './../../coctails.actions';
 import * as coctailsSelectors from '../../coctails.selectors';
 
 const News = ({ getCoctailsList, candidatesList, isFetching, nextpage }) => {
-  // const [fetchUrl, setFetchUrl] = useState(baseUrl);
+  const baseUrl = 'https://mockend.com/YuliyaTokareva/multiLanguage/posts';
+  const baseUrl2 = 'https://mockend.com/YuliyaTokareva/multiLanguage/posts?_offset=20&_limit=10';
+  const [fetchUrl, setFetchUrl] = useState(baseUrl);
 
   useEffect(() => {
-    getCoctailsList();
-  }, []);
+    getCoctailsList(fetchUrl);
+  }, [fetchUrl]);
 
-  // const handlerClick = (e) => {
-  //   e.preventDefault();
-  //   setFetchUrl(nextpage['next_url']);
-  // };
+  const handlerClick = (e) => {
+    e.preventDefault();
+    setFetchUrl(baseUrl2);
+  };
   return (
     <section className="get-request">
-      <h2 className="get-request__title title">Working with GET request</h2>
+      <h2 className="get-request__title title" onClick={(e) => handlerClick(e)}>
+        Working with GET request
+      </h2>
     </section>
   );
 };
