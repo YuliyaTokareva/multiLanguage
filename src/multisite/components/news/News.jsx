@@ -10,7 +10,7 @@ const News = ({ getCoctailsList, candidatesList, isFetching, nextpage }) => {
   const [fetchUrl, setFetchUrl] = useState(baseUrl);
 
   useEffect(() => {
-    getCoctailsList(fetchUrl);
+    getCoctailsList(baseUrl);
   }, [fetchUrl]);
 
   const handlerClick = (e) => {
@@ -28,7 +28,7 @@ const News = ({ getCoctailsList, candidatesList, isFetching, nextpage }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getCoctailsList: () => dispatch(coctailsActions.getCoctailsList())
+    getCoctailsList: (urlName) => dispatch(coctailsActions.getCoctailsList(urlName))
   };
 };
 const mapState = (state) => {
