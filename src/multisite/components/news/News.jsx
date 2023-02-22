@@ -5,7 +5,7 @@ import * as coctailsActions from './../../coctails.actions';
 import * as coctailsSelectors from '../../coctails.selectors';
 
 const News = ({ getCoctailsList, candidatesList, isFetching, nextpage }) => {
-  const baseUrl = 'https://mockend.com/YuliyaTokareva/multiLanguage/posts';
+  const baseUrl = 'https://mockend.com/YuliyaTokareva/multiLanguage/posts?_offset=10&_limit=10';
   const baseUrl2 = 'https://mockend.com/YuliyaTokareva/multiLanguage/posts?_offset=20&_limit=10';
   const [fetchUrl, setFetchUrl] = useState(baseUrl);
 

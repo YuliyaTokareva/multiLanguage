@@ -1,7 +1,7 @@
 import { COCTAILS_LIST_RECIEVED } from './coctails.actions';
 
 const initialState = {
-  coctailsList: {},
+  coctailsList: [],
   coctailsPagination: [],
 
   isFetching: false
@@ -13,7 +13,7 @@ const coctailsReduser = (state = initialState, action) => {
       return {
         ...state,
         coctailsList: action.payload.coctailsList,
-        // coctailsPagination: [...state.coctailsList, ...action.payload.coctailsList.users],
+        coctailsPagination: [...state.coctailsList, ...action.payload.coctailsList],
         isFetching: false
       };
 

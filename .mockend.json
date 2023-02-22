@@ -1,7 +1,7 @@
 {
   "Post": {
     "_": {
-      "items": 20
+      "items": 100
     },
     "cover": {
       "regexp": "https://picsum\\.photos/seed/[0-9]{5}/1920/270"
