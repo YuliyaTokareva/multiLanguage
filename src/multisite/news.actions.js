@@ -1,36 +1,25 @@
-import { fetchCocktails } from './dataGateway';
+import { fetchNews } from './dataGateway';
+export const SHOW_SPINNER = 'SHOW_SPINNER';
+export const NEWS_LIST_RECIEVED = 'NEWS_LIST_RECIEVED';
 
-export const COCTAILS_LIST_RECIEVED = 'COCTAILS_LIST_RECIEVED';
-
-// export const showSpinner = () => ({
-//   type: SHOW_SPINNER
-// });
-export const fetchCandidatesListRecieved = (coctailsList) => {
+export const showSpinner = () => ({
+  type: SHOW_SPINNER
+});
+export const fetchCandidatesListRecieved = (newsList) => {
   const action = {
-    type: COCTAILS_LIST_RECIEVED,
+    type: NEWS_LIST_RECIEVED,
     payload: {
-      coctailsList
+      newsList
     }
   };
   return action;
 };
-// export const fetchPosotionsListRecieved = (positionsList) => {
-//   const action = {
-//     type: POSITION_LIST_RECIEVED,
-//     payload: {
-//       positionsList
-//     }
-//   };
-//   return action;
-// };
 
-export const getCoctailsList = (urlName) => {
+export const getNewsList = (urlName) => {
   // eslint-disable-next-line
   const thunkAction = function (dispatch) {
-    // dispatch(showSpinner());
-    fetchCocktails(urlName).then((coctailsList) =>
-      dispatch(fetchCandidatesListRecieved(coctailsList))
-    );
+    dispatch(showSpinner());
+    fetchNews(urlName).then((newsList) => dispatch(fetchCandidatesListRecieved(newsList)));
   };
   return thunkAction;
 };

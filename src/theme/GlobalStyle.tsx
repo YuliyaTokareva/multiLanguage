@@ -6,11 +6,11 @@ const GlobalStyle = createGlobalStyle<ThemeProps<Theme>>`
   body,
   #root {
     height: 100%;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   body {
-    background: ${props => props.theme.palette.background.default};
+    background: ${(props) => props.theme.palette.background.default};
   }
 
   button, input, optgroup, select, textarea {
@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle<ThemeProps<Theme>>`
     margin-bottom: 0.5rem;
     font-weight: 500;
     line-height: 1.2;
+   
   }
 `;
 

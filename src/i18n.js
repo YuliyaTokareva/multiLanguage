@@ -3,13 +3,11 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18n
-  // detect user language
-  // learn more: https://github.com/i18next/i18next-browser-languageDetector
+
   .use(LanguageDetector)
-  // pass the i18n instance to react-i18next.
+
   .use(initReactI18next)
-  // init i18next
-  // for all options read: https://www.i18next.com/overview/configuration-options
+
   .init({
     debug: true,
     fallbackLng: 'uk',
@@ -22,7 +20,8 @@ i18n
           menu: {
             home: 'На головну',
             news: 'Новини',
-            authorization: 'Aвторизуватися'
+            authorization: 'Aвторизуватися',
+            profile: 'Профіль'
           }
         }
       },
@@ -31,7 +30,8 @@ i18n
           menu: {
             home: 'Home',
             news: 'News',
-            authorization: 'Authorization'
+            authorization: 'Authorization',
+            profile: 'Profile'
           }
         }
       }

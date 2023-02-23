@@ -1,26 +1,24 @@
 // import React from 'react';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation, matchPath } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// import Tabs from '@mui/material/Tabs';
-// import Tab from '@mui/material/Tab';
-import { Box, Button, Container, Tab, Tabs, Grid } from '@mui/material';
+import { authorizationStatus } from '../../../common/utils/statusAutorization';
 
 import * as Styled from './Header.styled';
-import Switch from '@mui/material/Switch';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
+
 const lngs = {
   uk: { nativeName: 'Укр' },
   en: { nativeName: 'En' }
 };
-type MenuTab = '/' | '/news' | '/authorization';
+type MenuTab = '/' | '/news' | '/authorization' | '/profile';
 
-const Header = () => {
+const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const [value, setValue] = React.useState('/');
-
+  const [value, setValue] = React.useState<MenuTab>('/');
+  // const [statusAutorize, setstatusAutorize] = React.useState(authorizationStatus);
+  // useEffect(() => {}, [statusAutorize]);
+  console.log(localStorage.getItem('authorization'));
   return (
     <>
       <Styled.Header>
@@ -28,7 +26,13 @@ const Header = () => {
           <Styled.Navbar>
             <Link to="/">{t('menu.home')}</Link>
             <Link to="/news">{t('menu.news')}</Link>
+            {/* {!statusAutorize ? (
+              <Link to="/authorization">{t('menu.authorization')}</Link>
+            ) : (
+              <Link to="/profile">{t('menu.profile')}</Link>
+            )} */}
             <Link to="/authorization">{t('menu.authorization')}</Link>
+            <Link to="/profile">{t('menu.profile')}</Link>
           </Styled.Navbar>
           <Styled.LangButtonBlock>
             {Object.keys(lngs).map((lng) => (

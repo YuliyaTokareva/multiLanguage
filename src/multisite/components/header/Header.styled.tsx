@@ -9,13 +9,17 @@ export const Header = styled((props) => <Box component="header" {...props} />)`
   padding: ${({ theme }) => theme.spacing(2, 0)};
 `;
 export const Navbar = styled((props) => <Box component="nav" {...props} />)`
-  // background-color: ${({ theme }) => theme.palette.secondary.main};
   display: flex;
   gap: 8px;
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.palette.text.primary};
     cursor: pointer;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+ 
   }
 `;
 

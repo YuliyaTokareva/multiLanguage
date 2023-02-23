@@ -1,7 +1,7 @@
-const baseUrl = 'https://mockend.com/mockend/demo/posts';
-const baseUrl2 = 'https://mockend.com/mockend/demo/posts?_offset=20&_limit=10';
+// const baseUrl = 'https://mockend.com/mockend/demo/posts';
+// const baseUrl2 = 'https://mockend.com/mockend/demo/posts?_offset=20&_limit=10';
 
-export const fetchCocktails = async (urlName) => {
+export const fetchNews = async (urlName) => {
   try {
     const response = await fetch(urlName, {
       method: 'GET'

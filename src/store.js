@@ -1,9 +1,9 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import coctailsReduser from './multisite/coctails.reducer';
+import newsReduser from './multisite/news.reducer';
 
 const reducer = combineReducers({
-  coctailsList: coctailsReduser
+  newsData: newsReduser
 });
 // eslint-disable-next-line
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

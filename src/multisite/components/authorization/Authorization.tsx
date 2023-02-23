@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
 import FormControl from '@mui/material/FormControl';
@@ -26,6 +26,7 @@ const Authorization: React.FC = () => {
   });
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const navigate = useNavigate();
 
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -41,13 +42,14 @@ const Authorization: React.FC = () => {
   localStorage.clear();
   const handlerSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    console.log(dataForm);
+
     if (dataForm.username === userLogin.username && dataForm.password === userLogin.password) {
       setDataForm({
         username: '',
         password: ''
       });
       localStorage.setItem('authorization', 'true');
+      navigate('/profile');
     }
 
     // const formData = compliteFormData(dataForm, fileField);

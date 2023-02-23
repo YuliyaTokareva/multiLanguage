@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 
 import Home from './Home';
 import News from './multisite/components/news/News';
+import Profile from './multisite/components/profile/Profile';
 import Authorization from './multisite/components/authorization/Authorization';
-
 import store from './store.js';
 import Header from './multisite/components/header/Header';
 import ThemeProvider from './theme/ThemeProvider';
@@ -18,10 +18,12 @@ const App = () => {
       <BrowserRouter>
         <Provider store={store}>
           <Header />
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/news" element={<News />} />
             <Route path="/authorization" element={<Authorization />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </Provider>
       </BrowserRouter>
