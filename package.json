@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc && webpack serve --mode=development --devtool source-map",
-    "build": "webpack --mode=production",
+    "build": "webpack --mode=production && echo '/* /index.html  200' | cat >dist/_redirects ",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "tsc": "tsc"
