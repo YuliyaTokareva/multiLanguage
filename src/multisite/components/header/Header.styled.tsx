@@ -18,8 +18,9 @@ export const Navbar = styled((props) => <Box component="nav" {...props} />)`
     flex-shrink: 0;
     font-size: 1.2rem;
     font-weight: 600;
-  }
- 
+    &:hover {
+      color: ${({ theme }) => theme.palette.primary.main};
+    }
   }
 `;
 
