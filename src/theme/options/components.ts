@@ -140,6 +140,17 @@ const components = {
         }
       }
     }
+  },
+  MuiIconButton: {
+    styleOverrides: {
+      root: {
+        backgroundColor: '#076ad3',
+        color: '#fff',
+        '&:hover': {
+          color: '#00141e'
+        }
+      }
+    }
   }
 };
 

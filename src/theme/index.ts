@@ -36,6 +36,20 @@ const theme = createTheme({
       lineHeight: '5.2rem',
       fontWeight: 500,
       color: palette.primary.main
+    },
+
+    h2: {
+      fontSize: '2.2rem',
+      lineHeight: '2.8rem',
+      fontWeight: 400,
+      color: palette.text.primary
+    },
+    h4: {
+      fontSize: '0.8rem',
+      lineHeight: '1rem',
+      fontWeight: 400,
+      color: palette.text.secondary,
+      textTransform: 'uppercase'
     }
   }
 });

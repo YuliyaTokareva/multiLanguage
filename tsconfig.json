@@ -25,5 +25,5 @@
   },
   "exclude": ["node_modules", ".next", "out"],
   // "include": ["**/*.ts", "**/*.tsx", "**/*.js"]
-  "include": ["src", "src/theme"]
+  "include": ["src", "src/theme", "**/*.png"]
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
@@ -72,6 +72,7 @@ const Authorization: React.FC = () => {
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
+                  sx={{ backgroundColor: 'transparent', color: 'rgba(0, 0, 0, 0.54)' }}
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
                   onMouseDown={handleMouseDownPassword}>
