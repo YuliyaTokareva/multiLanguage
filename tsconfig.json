@@ -19,11 +19,12 @@
       "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"], // this mapping is relative to "baseUrl"
       "@components/*": ["src/multisite/components/*"],
       "@common/*": ["src/common/*"],
+      "@entities/*": ["src/entities/*"],
+      "@img/*": ["src/multisite/img/*"],
       "@theme/*": ["src/theme/*"],
       "@theme": ["src/theme"]
     }
   },
   "exclude": ["node_modules", ".next", "out"],
-  // "include": ["**/*.ts", "**/*.tsx", "**/*.js"]
-  "include": ["src", "src/theme", "**/*.png"]
+  "include": ["src", "src/theme", "**/*.ts", "**/*.tsx"]
 }

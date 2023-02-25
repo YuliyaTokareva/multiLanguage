@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import type { NewsArticle } from '../../../entities/News';
 import Button from '@mui/material/Button';
 import * as newsActions from '../../news.actions';
 import * as newsSelectors from '../../news.selectors';
 import { arrayNewsPerPage } from '../../../common/utils/newsData';
 import CardNews from '../cardNews/CardNews';
+
 import * as Styled from './News.styled';
-import Typography from '@mui/material/Typography';
+
 type DataNewsProps = {
   getNewsList: any;
-  newsList: any;
+  newsList: NewsArticle[];
   isFetching: boolean;
 };
 

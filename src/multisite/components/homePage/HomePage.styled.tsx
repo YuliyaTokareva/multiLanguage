@@ -5,7 +5,6 @@ import BgBig from '../../img/sliderImage-lg.png';
 
 export const Page = styled(Box)`
   max-width: 1170px;
-
   min-height: 100vh;
   display: flex;
   align-items: center;
