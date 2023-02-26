@@ -1,12 +1,14 @@
-import { Box, Button, Container, Tab, Tabs, Grid, Menu, MenuItem } from '@mui/material';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import styled from 'styled-components';
+
 export const Layout = styled(Box)`
   max-width: 1170px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 `;
 export const Title = styled((props) => <Typography variant="h1" {...props} />)`
   text-align: center;
 `;
-export const CardsnewsBlock = styled(Box)``;

@@ -14,7 +14,7 @@ const coctailsReduser = (state = initialState, action: Actions): InitialState =>
       return {
         ...state,
         newsList: action.payload.newsList,
-        newsListPagination: [...state.newsList, ...action.payload.newsList],
+        newsListPagination: [...state.newsListPagination, ...action.payload.newsList],
         isFetching: false
       };
     case ActionTypes.SHOW_SPINNER: {

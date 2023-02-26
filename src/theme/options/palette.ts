@@ -44,6 +44,9 @@ const palette = {
     primary: '#00141e',
     secondary: '#555e61',
     disabled: '#c8cdcd'
+  },
+  gradient: {
+    background: 'linear-gradient(45deg, #086ad3 30%, #FF8E53 90%)'
   }
 };
 

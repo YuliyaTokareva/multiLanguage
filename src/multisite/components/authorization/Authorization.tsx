@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
-
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import IconButton from '@mui/material/IconButton';
@@ -9,7 +7,9 @@ import Input from '@mui/material/Input';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
 import * as Styled from './Authorization.styled';
+
 type FormItems = {
   username: String;
   password: String;
@@ -84,9 +84,11 @@ const Authorization: React.FC = () => {
           />
         </FormControl>
 
-        <Button variant="contained" type="submit" onClick={(e) => handlerSubmit(e)}>
-          Contained
-        </Button>
+        <Styled.ButtonBlock>
+          <Styled.FormButton onClick={(e: React.MouseEvent<HTMLButtonElement>) => handlerSubmit(e)}>
+            Contained
+          </Styled.FormButton>
+        </Styled.ButtonBlock>
       </Styled.FormBlock>
     </Styled.Page>
   );

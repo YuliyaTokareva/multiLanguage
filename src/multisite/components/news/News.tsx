@@ -9,21 +9,18 @@ import { arrayNewsPerPage } from '../../../common/utils/newsData';
 import CardNews from '../cardNews/CardNews';
 import { ThunkDispatch } from 'redux-thunk';
 import { State } from '../../../entities/Redux';
+import Spinner from '../spinner/Spinner';
 import * as Styled from './News.styled';
 
 type DataNewsProps = {
-  getNewsList: any;
+  getNewsList: (urlName: string) => void;
   newsList: NewsArticle[];
   isFetching: boolean;
 };
 
 const News: React.FC<DataNewsProps> = ({ getNewsList, newsList, isFetching }) => {
-  const baseUrl = 'https://mockend.com/YuliyaTokareva/multiLanguage/posts?offset=0&&limit=6';
-
-  const [fetchUrl, setFetchUrl] = React.useState(baseUrl);
   const [fetchStatus, setFetchStatus] = React.useState(isFetching);
   const [pagination, setPagination] = React.useState(0);
-  //const baseUrl2 = `https://mockend.com/YuliyaTokareva/multiLanguage/posts?offset=${pagination}&&limit=6`;
   React.useEffect(() => {
     setFetchStatus(isFetching);
   }, [isFetching]);
@@ -38,27 +35,16 @@ const News: React.FC<DataNewsProps> = ({ getNewsList, newsList, isFetching }) =>
     e.preventDefault();
     setPagination(pagination + 6);
   };
-  console.log(newsList);
+
   return (
     <Styled.Layout>
       <Styled.Title>News</Styled.Title>
-
-      {fetchStatus ? (
-        arrayNewsPerPage.map((el, index) => <CardNews key={index} isFetching={fetchStatus} />)
+      {!newsList ? (
+        ''
       ) : (
-        <>
-          {newsList.map((el) => (
-            <CardNews key={el.id} isFetching={fetchStatus} dataNews={el} />
-          ))}
-        </>
+        <CardNews handlerClick={handlerClick} isFetching={isFetching} dataNews={newsList} />
       )}
-      {fetchStatus ? (
-        arrayNewsPerPage.map((el, index) => <CardNews key={index} isFetching={fetchStatus} />)
-      ) : (
-        <Button variant="contained" onClick={(e) => handlerClick(e)}>
-          Show More
-        </Button>
-      )}
+      {!newsList || (newsList && isFetching) ? <Spinner /> : ''}
     </Styled.Layout>
   );
 };
