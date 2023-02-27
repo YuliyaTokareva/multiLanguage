@@ -70,6 +70,16 @@ const components = {
       }
     }
   },
+  MuiAvatar: {
+    styleOverrides: {
+      root: {
+        '.MuiAvatar-circular': {
+          width: 140,
+          height: 140
+        }
+      }
+    }
+  },
   MuiTab: {
     styleOverrides: {
       root: {

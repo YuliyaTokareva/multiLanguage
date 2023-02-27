@@ -1,6 +1,4 @@
-import { NEWS_LIST_RECIEVED, SHOW_SPINNER } from './news.actions';
-import { ActionTypes, Actions, InitialState, State } from '../entities/Redux';
-import type { NewsArticle } from '../entities/News';
+import { ActionTypes, Actions, InitialState } from '../entities/Redux';
 
 const initialState: InitialState = {
   newsList: [],
@@ -23,36 +21,14 @@ const coctailsReduser = (state = initialState, action: Actions): InitialState =>
         isFetching: true
       };
     }
+    case ActionTypes.NEWS_POST_DELETE: {
+      return {
+        ...state,
+        newsListPagination: []
+      };
+    }
     default:
       return state;
   }
 };
 export default coctailsReduser;
-// import { NEWS_LIST_RECIEVED, SHOW_SPINNER } from './news.actions';
-
-// const initialState = {
-//   newsList: [],
-//   newsListPagination: [],
-//   isFetching: false
-// };
-
-// const coctailsReduser = (state = initialState, action) => {
-//   switch (action.type) {
-//     case NEWS_LIST_RECIEVED:
-//       return {
-//         ...state,
-//         newsList: action.payload.newsList,
-//         newsListPagination: [...state.newsList, ...action.payload.newsList],
-//         isFetching: false
-//       };
-//     case SHOW_SPINNER: {
-//       return {
-//         ...state,
-//         isFetching: true
-//       };
-//     }
-//     default:
-//       return state;
-//   }
-// };
-// export default coctailsReduser;

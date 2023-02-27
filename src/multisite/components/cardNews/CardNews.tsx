@@ -8,13 +8,14 @@ type DataNewsProps = {
   isFetching: boolean;
   dataNews?: NewsArticle[];
   handlerClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onDelete: (idPost: string) => void;
 };
 
-const CardNews: React.FC<DataNewsProps> = ({ isFetching, dataNews, handlerClick }) => {
+const CardNews: React.FC<DataNewsProps> = ({ isFetching, dataNews, handlerClick, onDelete }) => {
   return (
     <>
       {dataNews.map((el) => (
-        <CardBody article={el} key={el.id} />
+        <CardBody article={el} key={el.id} onDelete={onDelete} />
       ))}
       {isFetching ? (
         ''

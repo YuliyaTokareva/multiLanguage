@@ -51,6 +51,13 @@ const theme = createTheme({
       fontWeight: 400,
       color: palette.text.secondary,
       textTransform: 'uppercase'
+    },
+    body2: {
+      fontSize: '0.8rem',
+      lineHeight: '1rem',
+      fontWeight: 400,
+      color: palette.text.secondary,
+      textTransform: 'uppercase'
     }
   }
 });

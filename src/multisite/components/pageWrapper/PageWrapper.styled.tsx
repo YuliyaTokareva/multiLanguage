@@ -1,6 +1,6 @@
+import * as React from 'react';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import React from 'react';
+
 import styled from 'styled-components';
 
 export const Layout = styled(Box)`
@@ -8,7 +8,4 @@ export const Layout = styled(Box)`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-`;
-export const Title = styled((props) => <Typography variant="h1" {...props} />)`
-  text-align: center;
 `;

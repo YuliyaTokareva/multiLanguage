@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import * as Styled from './HomePage.styled';
+import * as Styled from './HomeBanner.styled';
 
-const HomePage: React.FC = () => {
+const HomeBanner: React.FC = () => {
   return (
     <Styled.Page>
       <Styled.Headline>
@@ -13,4 +13,4 @@ const HomePage: React.FC = () => {
     </Styled.Page>
   );
 };
-export default HomePage;
+export default HomeBanner;

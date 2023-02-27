@@ -8,7 +8,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import * as Styled from './Authorization.styled';
+import * as Styled from './AuthorizationForm.styled';
 
 type FormItems = {
   username: String;
@@ -19,7 +19,7 @@ const userLogin = {
   password: '12345'
 };
 
-const Authorization: React.FC = () => {
+const AuthorizationForm: React.FC = () => {
   const [dataForm, setDataForm] = React.useState<FormItems>({
     username: '',
     password: ''
@@ -93,4 +93,4 @@ const Authorization: React.FC = () => {
     </Styled.Page>
   );
 };
-export default Authorization;
+export default AuthorizationForm;

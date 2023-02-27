@@ -2,10 +2,10 @@ import * as React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import Home from './Home';
-import News from './multisite/components/news/News';
-import Profile from './multisite/components/profile/Profile';
-import Authorization from './multisite/components/authorization/Authorization';
+import Home from './page/Home';
+import News from './page/News';
+import Profile from './page/Profile';
+import Authorization from './page/Authorization';
 import store from './store.js';
 import Header from './multisite/components/header/Header';
 import ThemeProvider from './theme/ThemeProvider';

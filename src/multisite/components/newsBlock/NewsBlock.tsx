@@ -2,23 +2,24 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import type { NewsArticle } from '../../../entities/News';
 import type { MapDispatchProps } from '../../../entities/Redux';
-import Button from '@mui/material/Button';
 import * as newsActions from '../../news.actions';
 import * as newsSelectors from '../../news.selectors';
-import { arrayNewsPerPage } from '../../../common/utils/newsData';
 import CardNews from '../cardNews/CardNews';
 import { ThunkDispatch } from 'redux-thunk';
 import { State } from '../../../entities/Redux';
 import Spinner from '../spinner/Spinner';
-import * as Styled from './News.styled';
+import { combineGetUrl } from '../../dataGateway';
+import { newsPerPage } from '../../../common/utils/newsData';
+import * as Styled from './NewsBlock.styled';
 
 type DataNewsProps = {
   getNewsList: (urlName: string) => void;
   newsList: NewsArticle[];
   isFetching: boolean;
+  deletePost: (idPost: string) => void;
 };
 
-const News: React.FC<DataNewsProps> = ({ getNewsList, newsList, isFetching }) => {
+const NewsBlock: React.FC<DataNewsProps> = ({ getNewsList, newsList, isFetching, deletePost }) => {
   const [fetchStatus, setFetchStatus] = React.useState(isFetching);
   const [pagination, setPagination] = React.useState(0);
   React.useEffect(() => {
@@ -26,32 +27,39 @@ const News: React.FC<DataNewsProps> = ({ getNewsList, newsList, isFetching }) =>
   }, [isFetching]);
 
   React.useEffect(() => {
-    getNewsList(
-      `https://mockend.com/YuliyaTokareva/multiLanguage/posts?offset=${pagination}&&limit=6`
-    );
+    getNewsList(combineGetUrl(pagination, newsPerPage));
   }, [pagination]);
 
-  const handlerClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handlerClickLoadMore = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setPagination(pagination + 6);
+    setPagination(pagination + newsPerPage);
+  };
+  const handlerClickDelete = (idPost: string) => {
+    deletePost(idPost);
   };
 
   return (
-    <Styled.Layout>
+    <>
       <Styled.Title>News</Styled.Title>
       {!newsList ? (
         ''
       ) : (
-        <CardNews handlerClick={handlerClick} isFetching={isFetching} dataNews={newsList} />
+        <CardNews
+          handlerClick={handlerClickLoadMore}
+          isFetching={isFetching}
+          dataNews={newsList}
+          onDelete={handlerClickDelete}
+        />
       )}
       {!newsList || (newsList && isFetching) ? <Spinner /> : ''}
-    </Styled.Layout>
+    </>
   );
 };
 
-const mapDispatch = (dispatch: ThunkDispatch<State, undefined, any>): MapDispatchProps => {
+const mapDispatch = (dispatch: ThunkDispatch<State, undefined, any>) => {
   return {
-    getNewsList: (urlName: string) => dispatch(newsActions.getNewsList(urlName))
+    getNewsList: (urlName: string) => dispatch(newsActions.getNewsList(urlName)),
+    deletePost: (idPost: string) => dispatch(newsActions.deleteNewsPost(idPost))
   };
 };
 const mapState = (state: State) => {
@@ -60,4 +68,4 @@ const mapState = (state: State) => {
     isFetching: newsSelectors.isFetchingSelector(state)
   };
 };
-export default connect(mapState, mapDispatch)(News);
+export default connect(mapState, mapDispatch)(NewsBlock);

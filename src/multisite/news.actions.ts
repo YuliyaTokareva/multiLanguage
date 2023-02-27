@@ -1,7 +1,8 @@
-import { fetchNews } from './dataGateway';
+import { fetchNews, deleteNews, baseUrlToUpdate } from './dataGateway';
 import { Dispatch } from 'redux';
 export const SHOW_SPINNER = 'SHOW_SPINNER';
 export const NEWS_LIST_RECIEVED = 'NEWS_LIST_RECIEVED';
+export const NEWS_POST_DELETE = 'NEWS_POST_DELETE';
 import type { NewsArticle } from '@entities/News';
 import { ActionTypes } from '../entities/Redux';
 
@@ -18,8 +19,11 @@ export const fetchNewsListRecieved = (newsList: NewsArticle[]) => {
   };
   return action;
 };
+export const deletePost = () => ({
+  type: ActionTypes.NEWS_POST_DELETE
+});
 
-export const getNewsList = (urlName: String) => {
+export const getNewsList = (urlName: string) => {
   // eslint-disable-next-line
   const thunkAction = function (dispatch: Dispatch) {
     dispatch(showSpinner());
@@ -28,28 +32,11 @@ export const getNewsList = (urlName: String) => {
   return thunkAction;
 };
 
-// import { fetchNews } from './dataGateway';
-// export const SHOW_SPINNER = 'SHOW_SPINNER';
-// export const NEWS_LIST_RECIEVED = 'NEWS_LIST_RECIEVED';
-
-// export const showSpinner = () => ({
-//   type: SHOW_SPINNER
-// });
-// export const fetchCandidatesListRecieved = (newsList) => {
-//   const action = {
-//     type: NEWS_LIST_RECIEVED,
-//     payload: {
-//       newsList
-//     }
-//   };
-//   return action;
-// };
-
-// export const getNewsList = (urlName) => {
-//   // eslint-disable-next-line
-//   const thunkAction = function (dispatch) {
-//     dispatch(showSpinner());
-//     fetchNews(urlName).then((newsList) => dispatch(fetchCandidatesListRecieved(newsList)));
-//   };
-//   return thunkAction;
-// };
+export const deleteNewsPost = (newsId: number) => {
+  // eslint-disable-next-line
+  const thunkAction = function (dispatch) {
+    dispatch(deletePost());
+    deleteNews(newsId).then(() => dispatch(getNewsList(baseUrlToUpdate)));
+  };
+  return thunkAction;
+};

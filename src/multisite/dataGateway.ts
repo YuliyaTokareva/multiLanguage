@@ -1,20 +1,41 @@
-// const baseUrl = 'https://mockend.com/mockend/demo/posts';
-// const baseUrl2 = 'https://mockend.com/mockend/demo/posts?_offset=20&_limit=10';
+const baseUrl = 'https://mockend.com/mockend/demo/posts';
 
-export const fetchNews = async (urlName) => {
+//mport { newsPerPage } from '../common/utils/newsData';
+
+export const combineGetUrl = (pageNumber: number, newsPerPage: number): string => {
+  return `${baseUrl}?offset=${pageNumber}&&limit=${newsPerPage}`;
+};
+export const baseUrlToUpdate = combineGetUrl(0, 6);
+export const fetchNews = async (urlName: string) => {
   try {
     const response = await fetch(urlName, {
       method: 'GET'
-      // headers: {
-      //   'X-RapidAPI-Key': 'e87f90002amsh119f0c6e102f384p1ba1e1jsn02565a9ca0fc',
-      //   'X-RapidAPI-Host': 'nutrition-by-api-ninjas.p.rapidapi.com'
-      // }
     });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
     const res = await response.json();
+
+    if (!res) {
+      throw new Error('Empty response!');
+    }
 
     return res;
   } catch (error) {
-    console.log(error);
-    return error.message;
+    throw new Error(`Failed to fetch news: ${error.message}`);
+  }
+};
+
+export const deleteNews = async (newsId: number) => {
+  try {
+    const response = await fetch(`https://mockend.com/mockend/demo/posts/${newsId}`, {
+      method: 'DELETE'
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+  } catch (error) {
+    throw new Error(`There was a problem with the fetch operation: ${error.message}`);
   }
 };

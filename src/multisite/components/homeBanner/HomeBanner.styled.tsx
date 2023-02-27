@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
-import { Box, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import BgBig from '../../img/sliderImage-lg.png';
 
 export const Page = styled(Box)`

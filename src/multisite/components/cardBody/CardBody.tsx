@@ -6,12 +6,14 @@ import Avatar from '@mui/material/Avatar';
 import type { NewsArticle } from '../../../entities/News';
 import IconButton from '@mui/material/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import DeleteOutlineSharpIcon from '@mui/icons-material/DeleteOutlineSharp';
 import * as Styled from './CardBody.styled';
 type DataNewsProps = {
   article: NewsArticle;
+  onDelete: (idPost: string) => void;
 };
 
-const CardBody: React.FC<DataNewsProps> = ({ article }) => {
+const CardBody: React.FC<DataNewsProps> = ({ article, onDelete }) => {
   return (
     <Styled.BodyCard>
       <Styled.CardStyled
@@ -22,8 +24,8 @@ const CardBody: React.FC<DataNewsProps> = ({ article }) => {
           />
         }
         action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
+          <IconButton aria-label="settings" onClick={() => onDelete(`${article.id}`)}>
+            <DeleteOutlineSharpIcon />
           </IconButton>
         }
         title={<Styled.CardNameAutor>{article.name}</Styled.CardNameAutor>}
