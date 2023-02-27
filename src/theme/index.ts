@@ -28,6 +28,7 @@ const theme = createTheme({
       desktop: 1200
     }
   },
+
   typography: {
     fontFamily: 'Raleway, Arial',
 

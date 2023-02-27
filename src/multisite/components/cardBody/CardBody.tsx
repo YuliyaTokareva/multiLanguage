@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';

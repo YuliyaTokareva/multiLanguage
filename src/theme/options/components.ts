@@ -1,5 +1,5 @@
 // import { getRgba } from '@common/utils/palette';
-
+import palette from './palette';
 const components = {
   MuiTouchRipple: {
     styleOverrides: {
@@ -55,6 +55,7 @@ const components = {
       }
     }
   },
+
   MuiTabs: {
     styleOverrides: {
       root: {

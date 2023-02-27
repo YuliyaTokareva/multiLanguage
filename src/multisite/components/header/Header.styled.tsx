@@ -34,7 +34,11 @@ export const Navbar = styled((props) => <Box component="nav" {...props} />)`
 `;
 
 export const IconButtonMob = styled((props) => (
-  <IconButton size="large" color="inherit" {...props}>
+  <IconButton
+    size="large"
+    variant="dashed"
+    sx={{ backgroundColor: '#ffffff', color: 'rgba(0, 0, 0, 0.54)' }}
+    {...props}>
     <MenuIcon />
   </IconButton>
 ))``;
