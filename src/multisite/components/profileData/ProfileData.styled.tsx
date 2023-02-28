@@ -13,10 +13,3 @@ export const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary
 }));
-
-export const Name = styled((props) => <Typography variant="h3" {...props} />)`
-  text-align: center;
-`;
-export const UserAvatar = styled(Avatar)(({ theme }) => ({
-  margin: theme.spacing(3, 'auto')
-}));

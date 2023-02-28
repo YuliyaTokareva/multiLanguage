@@ -1,6 +1,4 @@
-const baseUrl = 'https://mockend.com/mockend/demo/posts';
-
-//mport { newsPerPage } from '../common/utils/newsData';
+const baseUrl = 'https://mockend.com/YuliyaTokareva/multiLanguage/posts';
 
 export const combineGetUrl = (pageNumber: number, newsPerPage: number): string => {
   return `${baseUrl}?offset=${pageNumber}&&limit=${newsPerPage}`;
@@ -29,7 +27,7 @@ export const fetchNews = async (urlName: string) => {
 
 export const deleteNews = async (newsId: number) => {
   try {
-    const response = await fetch(`https://mockend.com/mockend/demo/posts/${newsId}`, {
+    const response = await fetch(`${baseUrl}/${newsId}`, {
       method: 'DELETE'
     });
     if (!response.ok) {

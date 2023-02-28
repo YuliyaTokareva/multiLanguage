@@ -49,15 +49,14 @@ const theme = createTheme({
       fontSize: '0.8rem',
       lineHeight: '1rem',
       fontWeight: 400,
-      color: palette.text.secondary,
+      color: palette.text.primary,
       textTransform: 'uppercase'
     },
     body2: {
       fontSize: '0.8rem',
       lineHeight: '1rem',
       fontWeight: 400,
-      color: palette.text.secondary,
-      textTransform: 'uppercase'
+      color: palette.text.primary
     }
   }
 });

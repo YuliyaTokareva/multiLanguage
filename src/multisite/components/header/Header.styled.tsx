@@ -41,7 +41,9 @@ export const IconButtonMob = styled((props) => (
     {...props}>
     <MenuIcon />
   </IconButton>
-))``;
+))`
+  background-color: #ffffff;
+`;
 export const MobMenu = styled((props) => (
   <Menu
     anchorOrigin={{

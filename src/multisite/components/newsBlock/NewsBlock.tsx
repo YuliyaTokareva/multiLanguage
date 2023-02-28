@@ -16,7 +16,7 @@ type DataNewsProps = {
   getNewsList: (urlName: string) => void;
   newsList: NewsArticle[];
   isFetching: boolean;
-  deletePost: (idPost: string) => void;
+  deletePost: (idPost: number) => void;
 };
 
 const NewsBlock: React.FC<DataNewsProps> = ({ getNewsList, newsList, isFetching, deletePost }) => {
@@ -34,7 +34,7 @@ const NewsBlock: React.FC<DataNewsProps> = ({ getNewsList, newsList, isFetching,
     e.preventDefault();
     setPagination(pagination + newsPerPage);
   };
-  const handlerClickDelete = (idPost: string) => {
+  const handlerClickDelete = (idPost: number) => {
     deletePost(idPost);
   };
 
@@ -59,7 +59,7 @@ const NewsBlock: React.FC<DataNewsProps> = ({ getNewsList, newsList, isFetching,
 const mapDispatch = (dispatch: ThunkDispatch<State, undefined, any>) => {
   return {
     getNewsList: (urlName: string) => dispatch(newsActions.getNewsList(urlName)),
-    deletePost: (idPost: string) => dispatch(newsActions.deleteNewsPost(idPost))
+    deletePost: (idPost: number) => dispatch(newsActions.deleteNewsPost(idPost))
   };
 };
 const mapState = (state: State) => {

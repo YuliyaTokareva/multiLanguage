@@ -3,7 +3,8 @@ import { ActionTypes, Actions, InitialState } from '../entities/Redux';
 const initialState: InitialState = {
   newsList: [],
   newsListPagination: [],
-  isFetching: false
+  isFetching: false,
+  authorization: null
 };
 
 const coctailsReduser = (state = initialState, action: Actions): InitialState => {
@@ -25,6 +26,18 @@ const coctailsReduser = (state = initialState, action: Actions): InitialState =>
       return {
         ...state,
         newsListPagination: []
+      };
+    }
+    case ActionTypes.LOGIN: {
+      return {
+        ...state,
+        authorization: true
+      };
+    }
+    case ActionTypes.LOGOUT: {
+      return {
+        ...state,
+        authorization: false
       };
     }
     default:

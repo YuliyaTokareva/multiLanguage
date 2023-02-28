@@ -10,7 +10,7 @@ import DeleteOutlineSharpIcon from '@mui/icons-material/DeleteOutlineSharp';
 import * as Styled from './CardBody.styled';
 type DataNewsProps = {
   article: NewsArticle;
-  onDelete: (idPost: string) => void;
+  onDelete: (idPost: number) => void;
 };
 
 const CardBody: React.FC<DataNewsProps> = ({ article, onDelete }) => {
@@ -24,7 +24,7 @@ const CardBody: React.FC<DataNewsProps> = ({ article, onDelete }) => {
           />
         }
         action={
-          <IconButton aria-label="settings" onClick={() => onDelete(`${article.id}`)}>
+          <IconButton aria-label="settings" onClick={() => onDelete(article.id)}>
             <DeleteOutlineSharpIcon />
           </IconButton>
         }

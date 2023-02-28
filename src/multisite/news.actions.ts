@@ -1,9 +1,6 @@
 import { fetchNews, deleteNews, baseUrlToUpdate } from './dataGateway';
 import { Dispatch } from 'redux';
-export const SHOW_SPINNER = 'SHOW_SPINNER';
-export const NEWS_LIST_RECIEVED = 'NEWS_LIST_RECIEVED';
-export const NEWS_POST_DELETE = 'NEWS_POST_DELETE';
-import type { NewsArticle } from '@entities/News';
+import type { NewsArticle } from '../entities/News';
 import { ActionTypes } from '../entities/Redux';
 
 export const showSpinner = () => ({
@@ -22,6 +19,12 @@ export const fetchNewsListRecieved = (newsList: NewsArticle[]) => {
 export const deletePost = () => ({
   type: ActionTypes.NEWS_POST_DELETE
 });
+export const loginUser = () => ({
+  type: ActionTypes.LOGIN
+});
+export const logoutUser = () => ({
+  type: ActionTypes.LOGOUT
+});
 
 export const getNewsList = (urlName: string) => {
   // eslint-disable-next-line
@@ -37,6 +40,18 @@ export const deleteNewsPost = (newsId: number) => {
   const thunkAction = function (dispatch) {
     dispatch(deletePost());
     deleteNews(newsId).then(() => dispatch(getNewsList(baseUrlToUpdate)));
+  };
+  return thunkAction;
+};
+
+export const getStatusAutorization = (status: boolean) => {
+  // eslint-disable-next-line
+  const thunkAction = function (dispatch: Dispatch) {
+    if (status) {
+      dispatch(loginUser());
+    } else {
+      dispatch(logoutUser());
+    }
   };
   return thunkAction;
 };

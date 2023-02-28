@@ -1,5 +1,10 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import * as newsActions from '../../news.actions';
+import * as newsSelectors from '../../news.selectors';
+import { ThunkDispatch } from 'redux-thunk';
+import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import IconButton from '@mui/material/IconButton';
@@ -7,7 +12,7 @@ import Input from '@mui/material/Input';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-
+import { State } from '../../../entities/Redux';
 import * as Styled from './AuthorizationForm.styled';
 
 type FormItems = {
@@ -19,12 +24,17 @@ const userLogin = {
   password: '12345'
 };
 
-const AuthorizationForm: React.FC = () => {
+type HeaderProps = {
+  getStatusAutorization: (loginStatus: boolean) => void;
+};
+
+const AuthorizationForm: React.FC<HeaderProps> = ({ getStatusAutorization }) => {
   const [dataForm, setDataForm] = React.useState<FormItems>({
     username: '',
     password: ''
   });
   const [showPassword, setShowPassword] = React.useState(false);
+  const [loginError, setLoginError] = React.useState('');
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const navigate = useNavigate();
 
@@ -38,20 +48,22 @@ const AuthorizationForm: React.FC = () => {
       [name]: value
     });
   };
-  console.log(localStorage.getItem('authorization'));
-  localStorage.clear();
+
+  //localStorage.clear();
   const handlerSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     if (dataForm.username === userLogin.username && dataForm.password === userLogin.password) {
+      localStorage.setItem('authorization', 'true');
+      getStatusAutorization(true);
       setDataForm({
         username: '',
         password: ''
       });
-      localStorage.setItem('authorization', 'true');
+
       navigate('/profile');
     }
-
+    setLoginError('Username or password entered incorrectly.');
     // const formData = compliteFormData(dataForm, fileField);
     // postFofm(formData);
   };
@@ -60,12 +72,17 @@ const AuthorizationForm: React.FC = () => {
       <Styled.FormBlock>
         <FormControl variant="standard">
           <InputLabel htmlFor="sstandard">Login</InputLabel>
-          <Input id="standard" name="username" onChange={(event) => handleChange(event)} />
+          <Input
+            id="standard"
+            required={true}
+            name="username"
+            onChange={(event) => handleChange(event)}
+          />
         </FormControl>
-
         <FormControl variant="standard">
           <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
           <Input
+            required={true}
             id="standard-adornment-password"
             type={showPassword ? 'text' : 'password'}
             name="password"
@@ -83,14 +100,32 @@ const AuthorizationForm: React.FC = () => {
             onChange={(event) => handleChange(event)}
           />
         </FormControl>
+        {loginError ? (
+          <Typography variant="body2" component="p">
+            {loginError}
+          </Typography>
+        ) : (
+          ''
+        )}
 
         <Styled.ButtonBlock>
           <Styled.FormButton onClick={(e: React.MouseEvent<HTMLButtonElement>) => handlerSubmit(e)}>
-            Contained
+            Login
           </Styled.FormButton>
         </Styled.ButtonBlock>
       </Styled.FormBlock>
     </Styled.Page>
   );
 };
-export default AuthorizationForm;
+const mapDispatch = (dispatch: ThunkDispatch<State, undefined, any>) => {
+  return {
+    getStatusAutorization: (status: boolean) => dispatch(newsActions.getStatusAutorization(status))
+  };
+};
+const mapState = (state: State) => {
+  return {
+    loginstatusState: newsSelectors.statusAutorization(state)
+  };
+};
+
+export default connect(mapState, mapDispatch)(AuthorizationForm);
