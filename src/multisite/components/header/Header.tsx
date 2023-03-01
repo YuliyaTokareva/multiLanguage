@@ -6,7 +6,6 @@ import * as newsActions from '../../news.actions';
 import * as newsSelectors from '../../news.selectors';
 import { ThunkDispatch } from 'redux-thunk';
 import { State } from '../../../entities/Redux';
-
 import * as Styled from './Header.styled';
 
 const lngs = {
@@ -32,8 +31,6 @@ const Header: React.FC<HeaderProps> = ({ getStatusAutorization, loginstatusState
     setstatusAutorize(loginstatusState);
   }, [loginstatusState]);
 
-  console.log('Status home', statusAutorize);
-  console.log('Status State', loginstatusState);
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -45,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({ getStatusAutorization, loginstatusState
   };
 
   return (
-    <Styled.Header>
+    <Styled.Header component="header">
       <Styled.MenuBlock>
         <Styled.HamburgerBlock>
           <Styled.IconButtonMob

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
+import { Typography, Box } from '@mui/material';
 import BgBig from '../../img/sliderImage-lg.png';
 
 export const Page = styled(Box)`
@@ -25,7 +24,7 @@ export const Headline = styled(Box)`
 `;
 
 export const Maintext = styled((props) => (
-  <Typography variant="h1" color="background.paper" {...props} />
+  <Typography variant="h1" color="background.paper" align="center" {...props} />
 ))`
   text-align: center;
 `;

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 
-import styled from 'styled-components';
+import { Typography, Box } from '@mui/material';
+
+import { styled } from '@mui/material/styles';
 
 export const Layout = styled(Box)`
   max-width: 1170px;

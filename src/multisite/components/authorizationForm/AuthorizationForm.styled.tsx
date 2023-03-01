@@ -1,10 +1,10 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+
 export const Page = styled(Box)`
   max-width: 1170px;
-
   min-height: 100vh;
   display: flex;
   align-items: center;

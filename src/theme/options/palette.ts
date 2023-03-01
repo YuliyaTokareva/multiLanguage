@@ -1,33 +1,16 @@
-import { common } from '@mui/material/colors';
-
-declare module '@mui/material/styles/createPalette' {
-  interface CommonColors {
-    yellow: string;
-  }
-
-  // interface Palette {
-  //   support: {
-  //     main: string;
-  //     light: string;
-  //     dark: string;
-  //     darker: string;
-  //   };
-  // }
-}
-
 const palette = {
   primary: {
     main: '#086ad3',
-    contrastText: common.white
+    contrastText: '#fff'
   },
 
   background: {
     default: '#eee',
-    paper: common.white
+    paper: '#fff'
   },
   text: {
     primary: '#00141e',
-    error: '#ff0000'
+    error: '#d22f2f'
   }
 };
 

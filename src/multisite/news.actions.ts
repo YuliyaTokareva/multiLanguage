@@ -1,5 +1,5 @@
 import { fetchNews, deleteNews, baseUrlToUpdate } from './dataGateway';
-import { Dispatch } from 'redux';
+import { Dispatch, AnyAction } from 'redux';
 import type { NewsArticle } from '../entities/News';
 import { ActionTypes } from '../entities/Redux';
 

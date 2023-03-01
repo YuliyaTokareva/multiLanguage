@@ -4,14 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import * as newsActions from '../../news.actions';
 import * as newsSelectors from '../../news.selectors';
 import { ThunkDispatch } from 'redux-thunk';
-import Typography from '@mui/material/Typography';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import IconButton from '@mui/material/IconButton';
-import Input from '@mui/material/Input';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import {
+  Typography,
+  FormControl,
+  InputLabel,
+  IconButton,
+  Input,
+  InputAdornment
+} from '@mui/material';
+import { VisibilityOff, Visibility } from '@mui/icons-material/';
 import { State } from '../../../entities/Redux';
 import * as Styled from './AuthorizationForm.styled';
 
@@ -33,8 +34,10 @@ const AuthorizationForm: React.FC<HeaderProps> = ({ getStatusAutorization }) => 
     username: '',
     password: ''
   });
+  let activeButton = Object.values(dataForm).some((x) => x.length === 0);
   const [showPassword, setShowPassword] = React.useState(false);
   const [loginError, setLoginError] = React.useState('');
+  let showingError = loginError.length !== 0;
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const navigate = useNavigate();
 
@@ -49,7 +52,6 @@ const AuthorizationForm: React.FC<HeaderProps> = ({ getStatusAutorization }) => 
     });
   };
 
-  //localStorage.clear();
   const handlerSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
@@ -64,15 +66,16 @@ const AuthorizationForm: React.FC<HeaderProps> = ({ getStatusAutorization }) => 
       navigate('/profile');
     }
     setLoginError('Username or password entered incorrectly.');
-    // const formData = compliteFormData(dataForm, fileField);
-    // postFofm(formData);
   };
   return (
     <Styled.Page>
       <Styled.FormBlock>
         <FormControl variant="standard">
-          <InputLabel htmlFor="sstandard">Login</InputLabel>
+          <InputLabel error={showingError} htmlFor="standard">
+            Login
+          </InputLabel>
           <Input
+            error={showingError}
             id="standard"
             required={true}
             name="username"
@@ -80,9 +83,11 @@ const AuthorizationForm: React.FC<HeaderProps> = ({ getStatusAutorization }) => 
           />
         </FormControl>
         <FormControl variant="standard">
-          <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+          <InputLabel error={showingError} htmlFor="standard-adornment-password">
+            Password
+          </InputLabel>
           <Input
-            required={true}
+            error={showingError}
             id="standard-adornment-password"
             type={showPassword ? 'text' : 'password'}
             name="password"
@@ -101,7 +106,7 @@ const AuthorizationForm: React.FC<HeaderProps> = ({ getStatusAutorization }) => 
           />
         </FormControl>
         {loginError ? (
-          <Typography variant="body2" component="p">
+          <Typography color="text.error" variant="body2" component="p">
             {loginError}
           </Typography>
         ) : (
@@ -109,7 +114,9 @@ const AuthorizationForm: React.FC<HeaderProps> = ({ getStatusAutorization }) => 
         )}
 
         <Styled.ButtonBlock>
-          <Styled.FormButton onClick={(e: React.MouseEvent<HTMLButtonElement>) => handlerSubmit(e)}>
+          <Styled.FormButton
+            disabled={activeButton}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => handlerSubmit(e)}>
             Login
           </Styled.FormButton>
         </Styled.ButtonBlock>

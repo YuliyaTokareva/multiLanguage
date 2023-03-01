@@ -1,13 +1,11 @@
 import * as React from 'react';
-
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Avatar from '@mui/material/Avatar';
-import type { NewsArticle } from '../../../entities/News';
-import IconButton from '@mui/material/IconButton';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { IconButton, Avatar, CardMedia, CardContent } from '@mui/material';
 import DeleteOutlineSharpIcon from '@mui/icons-material/DeleteOutlineSharp';
+
+import type { NewsArticle } from '../../../entities/News';
+
 import * as Styled from './CardBody.styled';
+
 type DataNewsProps = {
   article: NewsArticle;
   onDelete: (idPost: number) => void;

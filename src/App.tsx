@@ -9,8 +9,9 @@ import Authorization from './page/Authorization';
 import store from './store.js';
 import Header from './multisite/components/header/Header';
 import ThemeProvider from './theme/ThemeProvider';
-import theme from './theme/index';
-import { CssBaseline } from '@mui/material';
+import theme from './theme/theme';
+
+import CssBaseline from '@mui/material/CssBaseline';
 
 const App: React.FC = () => {
   return (

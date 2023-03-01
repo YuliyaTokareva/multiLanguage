@@ -3,7 +3,9 @@ const baseUrl = 'https://mockend.com/YuliyaTokareva/multiLanguage/posts';
 export const combineGetUrl = (pageNumber: number, newsPerPage: number): string => {
   return `${baseUrl}?offset=${pageNumber}&&limit=${newsPerPage}`;
 };
+
 export const baseUrlToUpdate = combineGetUrl(0, 6);
+
 export const fetchNews = async (urlName: string) => {
   try {
     const response = await fetch(urlName, {

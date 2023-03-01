@@ -20,6 +20,7 @@ declare module '@mui/material/styles' {
 const theme = createTheme({
   palette,
   components,
+  spacing: 8,
   breakpoints: {
     values: {
       mobile: 0,
@@ -44,6 +45,13 @@ const theme = createTheme({
       lineHeight: '2.8rem',
       fontWeight: 400,
       color: palette.text.primary
+    },
+    h3: {
+      fontSize: '2.2rem',
+      lineHeight: '2.8rem',
+      fontWeight: 400,
+      color: palette.text.primary,
+      textAlign: 'center'
     },
     h4: {
       fontSize: '0.8rem',

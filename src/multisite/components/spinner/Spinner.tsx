@@ -1,12 +1,13 @@
 import * as React from 'react';
 
 import CircularProgress from '@mui/material/CircularProgress';
-import * as Styled from './Spinner.styled';
+import Box from '@mui/material/Box';
+
 const Spinner = () => {
   return (
-    <Styled.SpinnerBody>
+    <Box sx={{ minHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <CircularProgress disableShrink />
-    </Styled.SpinnerBody>
+    </Box>
   );
 };
 

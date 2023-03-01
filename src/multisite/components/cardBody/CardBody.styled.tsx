@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import styled from 'styled-components';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
+
+import { styled } from '@mui/material/styles';
+import { CardHeader, Typography, Card } from '@mui/material/';
+
 export const BodyCard = styled((props) => <Card sx={{ m: 2 }} {...props} />)``;
 
 export const CardStyled = styled((props) => <CardHeader {...props} />)``;

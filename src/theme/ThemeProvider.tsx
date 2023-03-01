@@ -1,10 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import type { FC, ReactNode } from 'react';
 import type { Theme } from '@mui/material';
-import { ThemeProvider as StyledComponentProvider } from 'styled-components';
-import { ThemeProvider as MuiThemeProvider } from '@mui/material';
 
-import GlobalStyle from './GlobalStyle';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material';
 
 type ThemeProviderProps = {
   children: ReactNode;
@@ -12,14 +10,7 @@ type ThemeProviderProps = {
 };
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, theme }) => {
-  return (
-    <MuiThemeProvider theme={theme}>
-      <StyledComponentProvider theme={theme}>
-        <GlobalStyle />
-        {children}
-      </StyledComponentProvider>
-    </MuiThemeProvider>
-  );
+  return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
 };
 
 export default ThemeProvider;
